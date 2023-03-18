@@ -1,0 +1,21 @@
+* {
+  font-family: sans-serif;
+}
+
+main {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+  padding: 2rem;
+  border: 2px solid gray
+}
+
+button:not(button:last-of-type) {
+  margin-right: 1rem;
+}
