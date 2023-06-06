@@ -1,6 +1,7 @@
 :root {
     --primaryColor: hsl(273, 60%, 60%);
     --secundayColor: hsl(273, 60%, 45%);
+    --borderRadius: 8px;
 }
 
 main {
@@ -17,8 +18,13 @@ ul {
     list-style: none;
 }
 
+input {
+    margin-right: 1rem;
+}
+
 .toDoList {
     padding: 2rem;
+    border-radius: var(--borderRadius);
     background-color: var(--secundayColor);
 }
 
@@ -29,8 +35,9 @@ ul {
 }
 
 .toDoList .removeTask {
-    width: 1rem;
-    height: 1rem;
+    width: .8rem;
+    height: .8rem;
+    border-radius: 4px;
     background-color: red;
     cursor: pointer;
 }

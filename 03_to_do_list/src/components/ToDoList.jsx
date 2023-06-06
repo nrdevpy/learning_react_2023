@@ -6,60 +6,72 @@ const ToDoList = () => {
   const [list, setList] = useState([
     {
       id: 1,
-      description: 'description 1'
+      description: "Description 1",
     },
     {
       id: 2,
-      description: 'description 2'
+      description: "Description 2",
     },
     {
       id: 3,
-      description: 'description 3'
+      description: "Description 3",
     },
   ]);
 
   const addToList = (e) => {
     e.preventDefault();
-    const newList = [
-      ...list,
-      {
-        id: Math.random(),
-        description: toDo,
-      },
-    ];
-    setList(newList);
-    setToDo("");
+    if (toDo !== "") {
+      const newList = [
+        ...list,
+        {
+          id: Math.random(),
+          description: toDo,
+        },
+      ];
+      setList(newList);
+      setToDo("");
+    }
   };
 
-  const onChangeHandler = input => {
+  const onChangeHandler = (input) => {
     setToDo(input.target.value);
   };
 
-  const onRemoveTaskHandler = id => {
-    const newList = list.filter(element => {
-        return element.id !== id
-    })
-    setList(newList)
-  }
-  
+  const onRemoveTaskHandler = (id) => {
+    const newList = list.filter((element) => {
+      return element.id !== id;
+    });
+    setList(newList);
+  };
+
   return (
     <>
       <main>
         <div className="toDoList">
-            <h1>To Do List</h1>
-            <form onSubmit={addToList}>
-              <input type="text" onChange={onChangeHandler} value={toDo} />
-              <button type="submit">Add</button>
-            </form>
-            <h2>Tasks to do:</h2>
-            <ul>
-              {list.map(toDo => {
-                return <li key={toDo.id}>
-                    <p>{toDo.description}</p>
-                    <div className="removeTask" onClick={() => onRemoveTaskHandler(toDo.id)}></div>
-                </li>;
-              })}
-            </ul>
+          <h1>To Do List</h1>
+          <form onSubmit={addToList}>
+            <input
+              type="text"
+              onChange={onChangeHandler}
+              value={toDo}
+              placeholder="Enter a task..."
+            />
+            <button type="submit">Add</button>
+          </form>
+          <h2>Tasks to do:</h2>
+          <ul>
+            {list.map((toDo) => {
+              return (
+                <li key={toDo.id}>
+                  <p>{toDo.description}</p>
+                  <div
+                    className="removeTask"
+                    onClick={() => onRemoveTaskHandler(toDo.id)}
+                  ></div>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </main>
     </>
