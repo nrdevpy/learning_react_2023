@@ -3,7 +3,20 @@ import "./ToDoList.css";
 
 const ToDoList = () => {
   const [toDo, setToDo] = useState("");
-  const [list, setList] = useState([]);
+  const [list, setList] = useState([
+    {
+      id: 1,
+      description: 'description 1'
+    },
+    {
+      id: 2,
+      description: 'description 2'
+    },
+    {
+      id: 3,
+      description: 'description 3'
+    },
+  ]);
 
   const addToList = (e) => {
     e.preventDefault();
@@ -16,7 +29,6 @@ const ToDoList = () => {
     ];
     setList(newList);
     setToDo("");
-    console.log(list);
   };
 
   const onChangeHandler = input => {
@@ -24,9 +36,8 @@ const ToDoList = () => {
   };
 
   const onRemoveTaskHandler = id => {
-    // const id = e.target.dataset.value
     const newList = list.filter(element => {
-        element.id !== id
+        return element.id !== id
     })
     setList(newList)
   }
