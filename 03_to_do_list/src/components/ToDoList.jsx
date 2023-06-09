@@ -46,28 +46,35 @@ const ToDoList = () => {
 
   return (
     <>
-      <main>
-        <div className="toDoList">
-          <h1>To Do List</h1>
-          <form onSubmit={addToList}>
+      <main className="min-h-screen min-w-screen bg-purple-950 grid place-content-center text-lg">
+        <div className=" py-6 px-4 w-80 rounded bg-purple-400">
+          <h1 className="text-2xl my-4">To Do List</h1>
+          <form onSubmit={addToList} className="flex flex-col gap-4">
             <input
               type="text"
               onChange={onChangeHandler}
               value={toDo}
               placeholder="Enter a task..."
+              className="rounded p-2"
             />
-            <button type="submit">Add</button>
+            <button
+              type="submit"
+              className="bg-purple-200 rounded w-16 self-end"
+            >
+              Add
+            </button>
           </form>
-          <h2>Tasks to do:</h2>
-          <ul>
+          <h2 className="text-xl my-2">Tasks to do:</h2>
+          <ul className="h-48 overflow-scroll">
             {list.map((toDo) => {
               return (
-                <li key={toDo.id}>
+                <li key={toDo.id} className="flex justify-between my-2 mx-4">
                   <p>{toDo.description}</p>
-                  <div
-                    className="removeTask"
+                  <img
+                    className="max-w-[1rem] transition-all ease-in-out hover:scale-150 hover:opacity-100 cursor-pointer opacity-50"
+                    src="../../resources/xmark-solid.svg"
                     onClick={() => onRemoveTaskHandler(toDo.id)}
-                  ></div>
+                  />
                 </li>
               );
             })}
