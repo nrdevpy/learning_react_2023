@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./ToDoList.css";
+import markImg from '../../resources/xmark-solid.svg'
 
 const ToDoList = () => {
   const [toDo, setToDo] = useState("");
@@ -72,7 +73,8 @@ const ToDoList = () => {
                   <p className="max-w-[75%]">{toDo.description}</p>
                   <img
                     className="max-w-[1rem] transition-all ease-in-out hover:scale-150 hover:opacity-100 cursor-pointer opacity-50"
-                    src="../../resources/xmark-solid.svg"
+                    /* src="../../resources/xmark-solid.svg" */
+                    src={markImg}
                     onClick={() => onRemoveTaskHandler(toDo.id)}
                   />
                 </li>
